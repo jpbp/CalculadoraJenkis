@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Calculadora</title>
+	<script type="text/javascript" src="/js/custom.js"></script>
+	</head>
+	<body>
+		 <h1> Calculadora Jenkins</h1>
+   <form name="calc">
+   	<input type="text" name="visor" id="visor"></input><br>
+   	<input type="button" value="7" id="sete" onclick="botao(value);"></input>
+   	<input type="button" value="8" id="oito" onclick="botao(value);"></input>
+   	<input type="button" value="9" id="nove" onclick="botao(value);"></input>
+   	<input type="button" value="/" id="divisao" onclick="botao(value);"></input><br>
+   	
+   	<input type="button" value="4" id="quatro" onclick="botao(value);"></input>
+   	<input type="button" value="5" id="cinco" onclick="botao(value);"></input>
+   	<input type="button" value="6" id="seis" onclick="botao(value);"></input>
+   	<input type="button" value="*" id="mut" onclick="botao(value);"></input><br>
+   	
+   	<input type="button" value="1" id="um" onclick="botao(value);"></input>
+   	<input type="button" value="2" id="dois" onclick="botao(value);"></input>
+   	<input type="button" value="3" id="tres" onclick="botao(value);"></input>
+   	<input type="button" value="-" id="sub" onclick="botao(value);"></input><br>
+   	
+   	<input type="button" value="0" id="zero" onclick="botao(value);"></input>
+   	<input type="button" value="=" id="igual" onclick="calcular()"></input>
+   	<input type="button" value="C" id="clear" onclick="limpa();"></input>
+   	<input type="button" value="+" id="soma" onclick="botao(value);"></input><br>
+   		
+   </form>
+   <script>
+   		function botao(num){
+			let salvo = document.calc.visor.value;
+			document.calc.visor.value= salvo+num;
+			
+		}
+		
+		function limpa(){
+			if(document.getElementById('clear').value!="") {
+				document.getElementById('visor').value="";
+			}
+		}
+		
+		
+		function calcular(){
+			let visor= document.calc.visor.value;
+			document.getElementById('visor').value=eval(visor);
+		}
+   </script> 
+	</body>
+</html>
