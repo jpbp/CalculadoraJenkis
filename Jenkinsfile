@@ -21,5 +21,6 @@ pipeline{
                 sh 'mvn -Dtest=CalculadoraTestFuncional test'
             }
         }
+        
     }
 }
