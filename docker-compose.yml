@@ -1,0 +1,9 @@
+version: "3"
+services: 
+  calculadora:
+    container_name: calculadora
+    image: jpbp/calculadora:build_{BUILD_NUMBER}
+    build: 
+      context: .
+    ports: 
+        - 9999:8080

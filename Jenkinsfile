@@ -21,6 +21,12 @@ pipeline{
                 sh 'mvn -Dtest=CalculadoraTestFuncional test'
             }
         }
+        stage('deploy de produçaõ'){
+            steps{
+                sh 'docker-compose build'
+                sh 'docker-compose up -d'
+            }
+        }
     }
     post{
         unsuccessful{
