@@ -30,7 +30,7 @@ public class CalculadoraTestFuncional {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//entrar no site
 		//********************colocar o ip do vpn ***************************
-		driver.navigate().to("http://177.105.55.22:8001/index/");
+		driver.navigate().to("http://177.105.55.10:8001/index/");
 		driver.findElement(By.id("cinco")).click();
 		driver.findElement(By.id("soma")).click();
 		

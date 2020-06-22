@@ -13,7 +13,7 @@ pipeline{
         }
         stage('Deploy da calculadora'){
             steps{
-                deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://177.105.55.22:8001/')], contextPath: 'index', war: 'target/index.war'   
+                deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://177.105.55.10:8001/')], contextPath: 'index', war: 'target/index.war'   
             }
         }
         stage('Teste Funcional'){
@@ -23,6 +23,9 @@ pipeline{
         }
     }
     post{
+        always{
+            junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+        }
         unsuccessful{
             emailext attachLog: true, body: 'olha o log do projeto', subject: 'falhou a construção ', to: 'jpbp@estudante.ufla.br'
         }

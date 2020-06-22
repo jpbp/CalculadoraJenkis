@@ -2,7 +2,7 @@ version: "3"
 services: 
   calculadora:
     container_name: calculadora
-    image: jpbp/calculadora:build_{BUILD_NUMBER}
+    image: jpbp/calculadora:1.0
     build: 
       context: .
     ports: 
