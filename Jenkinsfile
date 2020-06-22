@@ -13,7 +13,7 @@ pipeline{
         }
         stage('Deploy da calculadora'){
             steps{
-                deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://192.168.3.5:8001/')], contextPath: 'index', war: 'target/index.war'   
+                deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://192.168.0.101:8001/')], contextPath: 'index', war: 'target/index.war'   
             }
         }
         stage('Teste Funcional'){
