@@ -26,11 +26,11 @@ public class CalculadoraTestFuncional {
 		DesiredCapabilities cap =  DesiredCapabilities.chrome();
 		//esse ip é do meu pc
 		//********************colocar o ip do vpn ***************************
-		WebDriver driver = new RemoteWebDriver(new URL("http://192.168.0.101:4444/wd/hub"),cap);
+		WebDriver driver = new RemoteWebDriver(new URL("http://177.105.55.13:4444/wd/hub"),cap);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//entrar no site
 		//********************colocar o ip do vpn ***************************
-		driver.navigate().to("http://192.168.0.101:8001/index/");
+		driver.navigate().to("http://177.105.55.13:8001/index/");
 		driver.findElement(By.id("cinco")).click();
 		driver.findElement(By.id("soma")).click();
 		
