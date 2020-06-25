@@ -13,6 +13,7 @@ pipeline{
         }
         stage('Deploy da calculadora'){
             steps{
+                sh 'ls'
                 sh 'docker-compose up -d'  
             }
         }
