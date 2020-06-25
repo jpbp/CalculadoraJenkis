@@ -30,7 +30,7 @@ public class CalculadoraTestFuncional {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//entrar no site
 		//********************ip fixo do server docker do tomcat  ***************************
-		driver.navigate().to("http://177.105.35.42:9999/index/");
+		driver.navigate().to("http://localhost:9999/index/");
 		driver.findElement(By.id("cinco")).click();
 		driver.findElement(By.id("soma")).click();
 		
