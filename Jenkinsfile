@@ -13,7 +13,8 @@ pipeline{
         }
         stage('Deploy da calculadora'){
             steps{
-                deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://177.105.55.10:8001/')], contextPath: 'index', war: 'target/index.war'   
+                sh 'sudo docker-compose build'
+                sh 'sudo docker-compose up -d'  
             }
         }
         stage('Teste Funcional'){

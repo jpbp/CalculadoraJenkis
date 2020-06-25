@@ -29,8 +29,8 @@ public class CalculadoraTestFuncional {
 		WebDriver driver = new RemoteWebDriver(new URL("http://177.105.35.42:4444/wd/hub"),cap);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//entrar no site
-		//********************colocar o ip do vpn ***************************
-		driver.navigate().to("http://177.105.55.10:8001/index/");
+		//********************ip fixo do server docker do tomcar ***************************
+		driver.navigate().to("http://177.105.35.42:9999/index/");
 		driver.findElement(By.id("cinco")).click();
 		driver.findElement(By.id("soma")).click();
 		
