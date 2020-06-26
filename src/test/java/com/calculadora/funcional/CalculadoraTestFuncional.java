@@ -26,12 +26,15 @@ public class CalculadoraTestFuncional {
 		DesiredCapabilities cap =  DesiredCapabilities.chrome();
 		//esse ip é do meu pc
 		//********************ip fixo do servidor, docker selenuim ***************************
-		WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),cap);
+		WebDriver driver = new RemoteWebDriver(new URL("http://177.105.35.42:4444/wd/hub"),cap);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//entrar no site
 		//********************ip fixo do server docker do tomcat  ***************************
-		driver.navigate().to("http://localhost:9999/index/");
+		System.out.println("aqui1");
+		driver.navigate().to("http://177.105.35.42:9999/index/");
+		System.out.println("aqui2");
 		driver.findElement(By.id("cinco")).click();
+		System.out.println("aqui3");
 		driver.findElement(By.id("soma")).click();
 		
 		driver.findElement(By.id("cinco")).click();
