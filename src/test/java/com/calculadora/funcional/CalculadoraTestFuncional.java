@@ -29,7 +29,7 @@ public class CalculadoraTestFuncional {
 		WebDriver driver = new RemoteWebDriver(new URL("http://177.105.35.42:4444/wd/hub"),cap);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//entrar no site
-		//********************ip fixo do server docker do tomcat  ***************************
+		//********************ip fixo do server docker do tomcat att ***************************
 		System.out.println("aqui1");
 		driver.navigate().to("http://177.105.35.42:9999/index/");
 		System.out.println("aqui2");
