@@ -31,7 +31,7 @@ public class CalculadoraTestFuncional {
 		//entrar no site
 		//********************ip fixo do server docker do tomcat att ***************************
 		System.out.println("aqui1");
-		driver.navigate().to("http://177.105.35.42:9999/index/");
+		driver.get("http://177.105.35.42/index/");
 		System.out.println("aqui2");
 		driver.findElement(By.id("cinco")).click();
 		System.out.println("aqui3");
