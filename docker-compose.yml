@@ -14,7 +14,10 @@ services:
 
   app:
     restart: always
-    build: ./
+    build: .
+    working_dir: ./
+    volumes:
+      - .:/
     expose:
       - "8080"
     command: mvn clean spring-boot:run
