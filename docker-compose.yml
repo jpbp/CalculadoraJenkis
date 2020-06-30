@@ -2,13 +2,13 @@ version: "2"
 services: 
   calculadora:
     container_name: calculadora
-    image: jpbp/calculadora:alpha
+    image: jpbp/calculadora:1.0
     build: 
       context: .
     networks:
         - seleniumGrid
     ports: 
-        - 8001:80
+        - 9999:8080
   selenium-hub:
     image: selenium/hub:3.141.59-zinc
     container_name: selenium-hub
