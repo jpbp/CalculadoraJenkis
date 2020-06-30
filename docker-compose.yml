@@ -1,44 +1,23 @@
-version: "2"
-services: 
-  calculadora:
-    container_name: calculadora
-    image: jpbp/calculadora:1.0
-    build: 
-      context: .
-    networks:
-        - seleniumGrid
-    ports: 
-        - 9999:8080
-  selenium-hub:
-    image: selenium/hub:3.141.59-zinc
-    container_name: selenium-hub
-    networks:
-        - seleniumGrid
-    ports:
-        - "4444:4444"
-  chrome:
-    image: selenium/node-chrome:3.141.59-zinc
-    container_name: Chrome-1
-    networks:
-        - seleniumGrid
-    depends_on:
-        - selenium-hub
-    environment:
-        - HUB_HOST=selenium-hub
-        - HUB_PORT=4444
-        - NODE_MAX_INSTANCES=2
-        - NODE_MAX_SESSIONS=2
-  chrome2:
-    image: selenium/node-chrome:3.141.59-zinc
-    container_name: Chrome-2
-    networks:
-        - seleniumGrid
-    depends_on:
-        - selenium-hub
-    environment:
-        - HUB_HOST=selenium-hub
-        - HUB_PORT=4444
-        - NODE_MAX_INSTANCES=2
-        - NODE_MAX_SESSIONS=2
-networks:
-  seleniumGrid:
+version: '2'
+services:
+  nginx:
+   container_name: some-nginx
+   image: nginx:1.13
+   restart: always
+   ports:
+   - 80:80
+   - 443:443
+   volumes:
+   - ./nginx/conf.d:/etc/nginx/conf.d
+   depends_on:
+   - app
+
+  app:
+    restart: always
+    build: ./app
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    expose:
+      - "8080"
+    command: mvn clean spring-boot:run
