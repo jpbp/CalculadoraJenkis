@@ -3,6 +3,11 @@ pipeline{
     stages{
         stage('Construção da calculadora'){
             steps{
+                sh 'ls'
+            }
+        }
+        stage('Construção da calculadora'){
+            steps{
                 sh 'mvn clean -DskipTests=true package'
             }
         }
