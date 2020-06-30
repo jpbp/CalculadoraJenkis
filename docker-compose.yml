@@ -1,16 +1,48 @@
 version: '2'
 services:
+  selenium-hub:
+    image: selenium/hub:3.141.59-zinc
+    container_name: selenium-hub
+    networks:
+        - seleniumGrid
+    ports:
+        - "4444:4444"
+  chrome:
+      image: selenium/node-chrome:3.141.59-zinc
+      container_name: Chrome-1
+      networks:
+          - seleniumGrid
+      depends_on:
+          - selenium-hub
+      environment:
+          - HUB_HOST=selenium-hub
+          - HUB_PORT=4444
+          - NODE_MAX_INSTANCES=2
+          - NODE_MAX_SESSIONS=2
+  chrome2:
+      image: selenium/node-chrome:3.141.59-zinc
+      container_name: Chrome-2
+      networks:
+          - seleniumGrid
+      depends_on:
+          - selenium-hub
+      environment:
+          - HUB_HOST=selenium-hub
+          - HUB_PORT=4444
+          - NODE_MAX_INSTANCES=2
+          - NODE_MAX_SESSIONS=2
+
   nginx:
-   container_name: some-nginx
-   image: nginx:1.13
-   restart: always
-   ports:
-   - 8000:8000
-   - 443:443
-   volumes:
-   - ./nginx/conf.d:/etc/nginx/conf.d
-   depends_on:
-   - app
+    container_name: some-nginx
+    image: nginx:1.13
+    restart: always
+    ports:
+    - 8000:8000
+    - 443:443
+    volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+    - app
 
   app:
     restart: always
@@ -21,3 +53,5 @@ services:
     expose:
       - "8080"
     command: mvn clean package spring-boot:run
+  networks:
+    seleniumGrid:
