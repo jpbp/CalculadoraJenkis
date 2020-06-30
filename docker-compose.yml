@@ -15,8 +15,9 @@ services:
   app:
     restart: always
     build: .
-    volumes:
-      - ./:./
+    volumes: 
+      - ./src:/src
+      - ./pom.xml:/pom.xml
     expose:
       - "8080"
-    command: mvn clean spring-boot:run
+    command: mvn clean package spring-boot:run
