@@ -3,12 +3,12 @@ pipeline{
     stages{
         stage('Construção da calculadora'){
             steps{
-                sh 'mvn -f app/pom.xml -DskipTests=true package'
+                sh 'mvn -DskipTests=true package'
             }
         }
         stage('Testes unitarios'){
             steps{
-                sh 'mvn app/pom.xml -Dtest=CalculadoraTest test'
+                sh 'mvn -Dtest=CalculadoraTest test'
             }
         }
         stage('Deploy da calculadora'){
@@ -18,7 +18,7 @@ pipeline{
         }
         stage('Teste Funcional'){
             steps{
-                sh 'mvn app/pom.xml  -Dtest=CalculadoraTestFuncional test'
+                sh 'mvn -Dtest=CalculadoraTestFuncional test'
             }
         }
     }
