@@ -29,24 +29,10 @@ public class CalculadoraTestFuncional {
 		WebDriver driver = new RemoteWebDriver(new URL("http://177.105.35.42:4444/wd/hub"),cap);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//entrar no site
-		//********************ip fixo do server docker do tomcat att ***************************
+		//********************ip fixo do server docker do ngnix att ***************************
 		System.out.println("aqui1");
-		driver.get("http://177.105.35.42:8000");
-		System.out.println("aqui2");
-		driver.findElement(By.id("cinco")).click();
-		System.out.println("aqui3");
-		driver.findElement(By.id("soma")).click();
+		driver.navigate().to("https://www.google.com/");
 		
-		driver.findElement(By.id("cinco")).click();
-		
-		driver.findElement(By.id("igual")).click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		WebElement element = driver.findElement(By.id("visor"));
-		String resultado = element.getAttribute("value");
-		
-		System.out.println(resultado);
-		assertEquals("10", resultado);
-		System.out.println("Teste funcional funcionou!!!!!");
 		driver.quit();
 	}
 }

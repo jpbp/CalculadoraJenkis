@@ -5,7 +5,7 @@ services:
     image: nginx:1.13
     restart: always
     networks:
-      - ngnix
+      - rede_jenkins
     ports:
       - 8000:8000
       - 443:443
@@ -13,17 +13,20 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - app
+    expose: 
+      - 8000
 
   app:
     restart: always
     build: .
+    networks:
+      - rede_jenkins
     volumes: 
       - ./src:/src
       - ./pom.xml:/pom.xml
-    networks:
-      - ngnix
     expose:
       - "8080"
     command: mvn clean package spring-boot:run
 networks:
-  ngnix:
+  rede_jenkins:
+    external: true
