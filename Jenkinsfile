@@ -17,6 +17,11 @@ pipeline{
                 sh 'docker-compose up -d'
             }
         }
+        stage('teste'){
+            steps{
+                sh 'curl http://177.105.35.42:8000'
+            }
+        }
         stage('Teste Funcional'){
             steps{
                 sh 'mvn -Dtest=CalculadoraTestFuncional test'
