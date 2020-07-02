@@ -14,7 +14,9 @@ pipeline{
         stage('Deploy da calculadora'){
             steps{
                 sh 'docker-compose build'
+                sh 'docker-compose down'
                 sh 'docker-compose up -d'
+                sh 'sleep 500'
             }
         }
         stage('teste'){
