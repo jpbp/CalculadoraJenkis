@@ -27,4 +27,3 @@ services:
     command: mvn clean package spring-boot:run
 networks:
   ngnix:
-    external: 
