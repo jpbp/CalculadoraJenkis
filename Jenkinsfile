@@ -19,21 +19,9 @@ pipeline{
                 sh 'sleep 500'
             }
         }
-        stage('teste'){
-            steps{
-                sh 'curl http://177.105.35.42:8000'
-            }
-        }
-        stage('Teste Funcional'){
-            steps{
-                sh 'mvn -Dtest=CalculadoraTestFuncional test'
-            }
-        }
+      
     }
     post{
-        always{
-            junit allowEmptyResults: true, testResults: 'app/target/surefire-reports/*.xml'
-        }
         unsuccessful{
             emailext attachLog: true, body: 'olha o log do projeto', subject: 'falhou a construção ', to: 'jpbp@estudante.ufla.br'
         }
